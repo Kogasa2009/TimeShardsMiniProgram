@@ -1,0 +1,51 @@
+
+<view class="page">
+  
+  <view class="header-bar">
+    <text class="header-title">我的套牌</text>
+  </view>
+
+  
+  <view class="loading-view" wx:if="{{ loading }}">
+    <text class="text-muted">加载中...</text>
+  </view>
+
+  
+  <view class="deck-list" wx:else>
+    <block wx:for="{{ myDecks }}" wx:key="_id">
+      
+      <view class="deck-item card card-touch"
+        bindtap="goToDeckDetail"
+        data-id="{{ item._id }}">
+        
+        <view class="deck-item-cover">
+          <image src="{{ item.coverUrl || '/images/default-deck-cover.png' }}" mode="widthFix" />
+        </view>
+        
+        <view class="deck-item-info">
+          <text class="deck-item-name">{{ item.name }}</text>    
+          <view class="deck-item-meta">
+            <text class="tag tag-faction">{{ item.faction }}</text> 
+            <text class="text-muted">{{ item.cards ? item.cards.length : 0 }}张 · {{ item.createTime }}</text> 
+          </view>
+        </view>
+        
+        <text class="arrow-right">›</text>
+      </view>
+    </block>
+
+    
+    <view class="empty-view" wx:if="{{ myDecks.length === 0 && !loading }}">
+      <text class="empty-icon">📋</text>
+      <text>还没有套牌</text>
+      <text class="text-muted">点击下方按钮创建你的第一副套牌</text>
+    </view>
+  </view>
+
+  
+  <view class="create-btn-box">
+    <view class="btn-primary" bindtap="createNewDeck">
+      <text>＋ 新建套牌</text>
+    </view>
+  </view>
+</view>

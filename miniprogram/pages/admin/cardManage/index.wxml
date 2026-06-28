@@ -1,0 +1,66 @@
+
+<view class="page">
+  
+  <view class="admin-header">
+    <text class="admin-title">卡牌管理</text>
+    <view class="btn-primary btn-small" bindtap="addCard">＋ 新增卡牌</view>
+  </view>
+
+  
+  <view class="search-bar">
+    <view class="search-input-box">
+      <text class="search-icon">🔍</text>
+      <input class="search-input" placeholder="搜索卡牌名称..." placeholder-style="color:#666" value="{{ searchKey }}" bindinput="onSearchInput" />
+      
+      <text class="search-clear" wx:if="{{ searchKey }}" bindtap="clearSearch">✕</text>
+    </view>
+  </view>
+
+  
+  <scroll-view class="faction-tabs" scroll-x="true">
+    <view class="tab-list">
+      
+      <block wx:for="{{ factions }}" wx:key="index">
+        <view class="tab-item {{ selectedFaction === index ? 'active' : '' }}" bindtap="switchFaction" data-index="{{ index }}">
+          <text>{{ item }}</text>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  
+  <view class="loading-view" wx:if="{{ loading }}">
+    <text class="text-muted">加载中...</text>
+  </view>
+
+  
+  <view class="card-list" wx:else>
+    <block wx:for="{{ cards }}" wx:key="_id">
+      
+      <view class="card-item">
+        
+        <image src="{{ item.displayImageUrl || item.imageUrl }}" class="card-thumb" mode="aspectFill" />
+        <view class="card-info">
+          <text class="card-name">{{ item.name }}</text>
+          <view class="card-meta">
+            <text class="text-muted">费用: {{ item.cost }}</text>
+            <text class="text-muted">{{ item.rarity }} · {{ item.type }}</text>
+          </view>
+        </view>
+        
+        <view class="card-actions">
+          <view class="btn-edit" bindtap="editCard" data-id="{{ item._id }}">
+            <text>编辑</text>
+          </view>
+          <view class="btn-delete" bindtap="deleteCard" data-id="{{ item._id }}">
+            <text>删除</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <view class="empty-view" wx:if="{{ cards.length === 0 && !loading }}">
+      <text>暂无卡牌数据</text>
+    </view>
+  </view>
+</view>

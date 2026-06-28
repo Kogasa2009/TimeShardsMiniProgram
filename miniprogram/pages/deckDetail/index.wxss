@@ -1,0 +1,112 @@
+/* ===========================
+ * 套牌详情页样式
+ * 套牌头部 + 法力曲线柱状图 + 卡组网格 + 固定底部操作栏
+ * =========================== */
+
+/* 页面布局——底部留白避免被操作栏遮挡 */
+.page { padding: 20rpx; padding-bottom: 140rpx; }
+
+/* ---- 套牌头部 ---- */
+.deck-header { padding: 20rpx; display: flex; }
+/* 封面缩略图——裁剪卡图区域 */
+.deck-cover {
+  position: relative; width: 160rpx; height: 86rpx;  /* 160 × 319/591 ≈ 86 */
+  overflow: hidden; border-radius: 16rpx;
+  margin-right: 20rpx; flex-shrink: 0;
+}
+.deck-cover image { position: absolute; width: 100%; top: -22.3%; left: -2.9%; }
+/* 头部信息 */
+.deck-header-info { flex: 1; display: flex; flex-direction: column; gap: 10rpx; }
+.deck-name { font-size: 34rpx; font-weight: bold; color: #fff; }
+.deck-meta { display: flex; flex-direction: column; gap: 6rpx; }
+/* 编辑按钮——金色 */
+.edit-btn {
+  padding: 10rpx 20rpx; background: #e6b800; color: #1a1a2e;
+  border-radius: 20rpx; font-size: 24rpx; font-weight: bold;
+  align-self: flex-start; margin-bottom: 8rpx;
+}
+/* 删除按钮——红色边框 */
+.delete-deck-btn {
+  padding: 10rpx 20rpx; background: transparent;
+  color: #ff4444; border: 1px solid #ff4444;
+  border-radius: 20rpx; font-size: 24rpx; align-self: flex-start;
+}
+
+/* ---- 区域标题 ---- */
+.section-title {
+  font-size: 28rpx; font-weight: bold; color: #ccc;
+  display: block; margin: 20rpx 0 16rpx;
+}
+
+/* ---- 法力曲线 ---- */
+.curve-section { margin-top: 20rpx; padding: 20rpx; }
+.curve-chart {
+  display: flex; align-items: flex-end;               /* 柱子底部对齐 */
+  justify-content: space-between;
+  height: 200rpx;                                    /* 图表固定高度 */
+  padding-top: 20rpx;
+}
+.curve-bar-col {
+  display: flex; flex-direction: column;
+  align-items: center; flex: 1;
+}
+/* 柱状条——金橙渐变，底边圆角 */
+.curve-bar {
+  width: 20rpx;
+  background: linear-gradient(to top, #e6b800, #ff8c00); /* 底部金→顶部橙 */
+  border-radius: 4rpx 4rpx 0 0;                      /* 顶部圆角 */
+  min-height: 2rpx;                                  /* 0 时也有微小的可见 */
+  transition: height 0.3s;                           /* 高度变化动画 */
+}
+.curve-label, .curve-value { font-size: 18rpx; color: #888; margin-top: 4rpx; }
+
+/* ---- 卡组构成 ---- */
+.cards-section { margin-top: 10rpx; }
+.card-grid {
+  display: grid; grid-template-columns: 1fr 1fr;     /* 2 列等宽 */
+  gap: 12rpx;
+}
+/* 迷你卡牌——与 deckEdit 共用样式 */
+.mini-card {
+  display: flex; align-items: center;
+  padding: 14rpx 16rpx; background: #1a1a2e;
+  border-radius: 10rpx; border: 1px solid #222240;
+}
+.mini-card-cost {
+  width: 44rpx; height: 44rpx; border-radius: 50%;
+  background: #2a2a4a; color: #e6b800;
+  font-size: 24rpx; font-weight: bold;
+  text-align: center; line-height: 44rpx;
+  margin-right: 12rpx; flex-shrink: 0;
+}
+.mini-card-name {
+  flex: 1; font-size: 24rpx; color: #ccc;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.mini-card-rarity { font-size: 20rpx; margin-left: 8rpx; }
+
+/* ---- 固定底部操作栏 ---- */
+.action-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; gap: 16rpx;
+  padding: 10rpx 24rpx;
+  padding-bottom: calc(5rpx + env(safe-area-inset-bottom));
+  background: #12121f; border-top: 1px solid #2a2a4a;
+  justify-content: center;
+}
+.deck-actions {
+  display: flex; justify-content: center; gap: 40rpx;
+  padding: 20rpx 0; margin-top: 20rpx;
+}
+/* 操作项——点赞 */
+.action-item {
+  display: flex; flex-direction: row; align-items: center;
+  padding: 6rpx 20rpx;
+}
+.action-icon { font-size: 36rpx; }                   /* 心形图标 */
+.action-text { font-size: 24rpx; color: #e6b800; margin-left: 8rpx; } /* 点赞数——金色 */
+/* 已收藏样式——金色高亮 */
+.favorited {
+  background: rgba(230, 184, 0, 0.2) !important;
+  color: #e6b800 !important; border-color: #e6b800 !important;
+}

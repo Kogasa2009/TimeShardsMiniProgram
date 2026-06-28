@@ -1,0 +1,84 @@
+
+<view class="page">
+  
+  <block wx:if="{{ deck }}">
+    
+    <view class="deck-header card">
+      
+      <view class="deck-cover">
+        <image src="{{ deck.coverUrl || '/images/default-deck-cover.png' }}" mode="widthFix" />
+      </view>
+      
+      <view class="deck-header-info">
+        <text class="deck-name">{{ deck.name }}</text>                    
+        <view class="deck-meta">
+          <text class="tag tag-faction">{{ deck.faction }}</text>         
+          <text class="text-muted">创作者: {{ deck.creatorName || '匿名' }}</text> 
+          <text class="text-muted">{{ deck.createTime }}</text>           
+        </view>
+      </view>
+      
+      <view class="edit-btn" wx:if="{{ editable }}" bindtap="editDeck">
+        <text>编辑</text>
+      </view>
+      
+      <view class="delete-deck-btn" wx:if="{{ editable || isAdmin }}" bindtap="deleteDeck">
+        <text>删除</text>
+      </view>
+    </view>
+
+    
+    <view class="curve-section card">
+      <text class="section-title">法力曲线</text>
+      <view class="curve-chart">
+        
+        <block wx:for="{{ curveData }}" wx:key="index">
+          <view class="curve-bar-col">
+            
+            <view class="curve-bar" style="height: {{ curveHeights[index] }}rpx;"></view>
+            <text class="curve-label">{{ index }}{{ index === 7 ? '+' : '' }}</text> 
+            <text class="curve-value">{{ item }}</text>                              
+          </view>
+        </block>
+      </view>
+    </view>
+
+    
+    <view class="cards-section">
+      <text class="section-title">卡组构成 ({{ cards.length }}张)</text>
+      <view class="card-grid">
+        
+        <block wx:for="{{ cardGroups }}" wx:key="card.name">
+          <view class="mini-card card-touch" bindtap="goToCardDetail" data-id="{{ item.card._id }}">
+            <text class="mini-card-cost">{{ item.card.cost }}</text>     
+            <text class="mini-card-name">{{ item.card.name }}</text>     
+            <text class="mini-card-rarity">×{{ item.count }}</text>      
+            
+            <text class="mini-card-rarity rarity-{{ item.card.rarity === '纸' ? 'paper' : item.card.rarity === '锡' ? 'tin' : item.card.rarity === '铂' ? 'platinum' : 'crystal' }}">{{ item.card.rarity }}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    
+    <view class="action-bar">
+      
+      <view class="action-item" bindtap="toggleLike">
+        <text class="action-icon">{{isLiked ? '♥' : '♡'}}</text>        
+        <text class="action-text">{{deck.likes || 0}}</text>             
+      </view>
+      
+      <view class="action-btn btn-secondary btn-small {{ isFavorited ? 'favorited' : '' }}" bindtap="toggleFavorite">
+        <text>{{ isFavorited ? '★ 已收藏' : '☆ 收藏' }}</text>
+      </view>
+      
+      <view class="action-btn btn-secondary btn-small" bindtap="sortCards">
+        <text>排序: {{ sortType === 'cost' ? '费用' : sortType === 'rarity' ? '稀有度' : '名称' }}</text>
+      </view>
+      
+      <view class="action-btn btn-primary btn-small" bindtap="copyDeckCode">
+        <text>复制套牌代码</text>
+      </view>
+    </view>
+  </block>
+</view>

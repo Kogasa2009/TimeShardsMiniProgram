@@ -1,0 +1,184 @@
+/* ===========================
+ * 用户中心（"我的"）页样式
+ * 个人资料头部 + 菜单列表 + 收藏子页面
+ * =========================== */
+
+/* 页面最小高度撑满视口 */
+.page {
+  min-height: 100vh;
+}
+
+/* ---- 用户资料头部 ---- */
+.profile-header {
+  display: flex;
+  flex-direction: column;                           /* 头像、昵称、徽章纵向排列 */
+  align-items: center;                              /* 水平居中 */
+  padding: 60rpx 0 40rpx;
+  background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%); /* 上亮下暗渐变背景 */
+}
+
+/* 头像按钮——去除微信 button 默认样式 */
+.avatar-btn {
+  padding: 0;
+  margin: 0 0 16rpx;
+  background: transparent;                          /* 透明背景 */
+  border: none;                                     /* 无边框 */
+  line-height: 0;                                   /* 消除行高产生的额外空间 */
+}
+.avatar-btn::after {
+  border: none;                                     /* 去除微信 button 伪元素边框 */
+}
+
+/* 头像图片——圆形裁切 + 金色描边 */
+.avatar {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;                               /* 正圆形 */
+  border: 4rpx solid #e6b800;                       /* 金色边框 */
+}
+
+/* 无头像时的占位样式——深色圆形背景 */
+.avatar-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2a2a4a;
+}
+.avatar-placeholder-text {
+  font-size: 22rpx;
+  color: #888;
+  text-align: center;
+}
+
+/* 昵称输入框——居中、大号白色加粗 */
+.nickname-input {
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  height: 60rpx;
+  margin-top: 12rpx;
+}
+
+/* 管理员徽章——金色背景深色文字 */
+.admin-badge {
+  margin-top: 8rpx;
+  padding: 4rpx 20rpx;
+  background: #e6b800;
+  color: #1a1a2e;
+  border-radius: 16rpx;
+  font-size: 22rpx;
+  font-weight: bold;
+}
+
+/* ---- 功能菜单列表 ---- */
+.menu-list {
+  padding: 30rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;                                       /* 菜单项间距 */
+}
+
+/* 单个菜单项——图标 + 文字 + 箭头，横向两端对齐 */
+.menu-item {
+  display: flex;
+  justify-content: space-between;                   /* 左右两端对齐 */
+  align-items: center;
+  padding: 28rpx 24rpx;
+  background: #1a1a2e;                              /* 深色卡片背景 */
+  border-radius: 12rpx;
+}
+.menu-item-left {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;                                       /* 图标与文字间距 */
+}
+.menu-icon {
+  font-size: 32rpx;                                 /* emoji 图标大小 */
+}
+.menu-text {
+  font-size: 28rpx;
+  color: #e0e0e0;
+}
+.menu-arrow {
+  font-size: 36rpx;
+  color: #555;                                      /* 暗灰色箭头 */
+}
+
+/* ---- 收藏子页面 ---- */
+
+/* 收藏页头部——返回 + 标题 + 占位，flex 三段式居中 */
+.fav-header {
+  display: flex;
+  justify-content: space-between;                   /* 左中右三段 */
+  align-items: center;
+  padding: 20rpx 24rpx;
+  border-bottom: 1px solid #2a2a4a;                 /* 底部分割线 */
+}
+.back-btn {
+  font-size: 28rpx;
+  color: #e6b800;                                   /* 金色返回按钮 */
+}
+.fav-title {
+  font-size: 30rpx;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* 收藏列表容器 */
+.fav-list {
+  padding: 20rpx 24rpx;
+}
+
+/* 单个收藏条目——横向排列：封面 + 信息 + 删除按钮 */
+.fav-item {
+  display: flex;
+  align-items: center;
+  padding: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+/* 套牌封面缩略图——固定宽高圆角 */
+.fav-cover {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 12rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;                                   /* 不被压缩 */
+}
+
+/* 套牌信息——占满剩余空间 */
+.fav-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+.fav-name {
+  font-size: 28rpx;
+  color: #e0e0e0;
+  font-weight: bold;
+}
+
+/* 取消收藏的红色 X 按钮 */
+.remove-fav {
+  font-size: 28rpx;
+  color: #ff4444;                                   /* 警示红色 */
+  margin-left: 10rpx;
+  width: 50rpx;                                     /* 固定宽高增大点击区域 */
+  text-align: center;
+}
+
+/* 退出登录按钮——红色半透明背景 */
+.logout-btn {
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;                               /* 垂直居中 */
+  margin: 40rpx auto;                               /* 居中 + 上间距 */
+  background: rgba(255, 80, 80, 0.15);              /* 半透明红色背景 */
+  color: #ff5050;                                   /* 红色文字 */
+  font-size: 28rpx;
+  border-radius: 12rpx;
+  text-align: center;
+  border: none;                                     /* 去除微信 button 默认边框 */
+}

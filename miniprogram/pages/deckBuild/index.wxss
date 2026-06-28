@@ -1,0 +1,67 @@
+/* ===========================
+ * 组牌页（我的套牌）样式
+ * 标题 + 套牌列表 + 固定底部新建按钮
+ * =========================== */
+
+/* 底部留出新建按钮空间 */
+.page { padding-bottom: 140rpx; }
+
+/* 页头标题栏 */
+.header-bar { padding: 30rpx 24rpx 20rpx; }
+.header-title {
+  font-size: 36rpx; font-weight: bold; color: #fff;  /* 大号白色加粗 */
+}
+
+/* 套牌列表 */
+.deck-list { padding: 0 24rpx; }
+
+/* 单副套牌条目——横向 flex */
+.deck-item {
+  display: flex; align-items: center;
+  padding: 16rpx; margin-bottom: 16rpx;
+}
+
+/* 套牌封面缩略图——裁剪卡图 (17,71)-(569,390) 区域 */
+.deck-item-cover {
+  position: relative;
+  width: 160rpx;
+  height: 86rpx;                                     /* 160 × 319/591 ≈ 86 */
+  overflow: hidden;
+  border-radius: 12rpx;
+  margin-right: 20rpx;
+  flex-shrink: 0;                                    /* 不压缩 */
+}
+.deck-item-cover image {
+  position: absolute; width: 100%;
+  top: -22.3%;                                       /* -71/319 上偏移 */
+  left: -2.9%;                                       /* -17/591 左偏移 */
+}
+
+/* 套牌信息区 */
+.deck-item-info {
+  flex: 1;                                           /* 占满剩余空间 */
+  display: flex; flex-direction: column;
+  gap: 8rpx;
+}
+.deck-item-name { font-size: 28rpx; color: #e0e0e0; font-weight: bold; }
+
+/* 元数据行——阵营标签 + 卡牌数 + 时间 */
+.deck-item-meta { display: flex; align-items: center; gap: 12rpx; }
+
+/* 阵营标签——金色半透明底色 */
+.tag-faction {
+  background: rgba(230, 184, 0, 0.15); color: #e6b800;
+  padding: 4rpx 16rpx; border-radius: 8rpx; font-size: 22rpx;
+}
+
+/* 右箭头指示器 */
+.arrow-right { font-size: 40rpx; color: #555; }
+
+/* 固定底部"新建套牌"按钮——渐变遮罩过渡 */
+.create-btn-box {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  padding: 20rpx 40rpx;
+  background: linear-gradient(transparent, #0f0f1a 40%); /* 透明→深色渐变 */
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom)); /* 安全区适配 */
+}
+.create-btn-box .btn-primary { display: block; }

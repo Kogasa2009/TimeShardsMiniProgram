@@ -1,0 +1,112 @@
+/* ===========================
+ * 全局样式 —— 所有页面共享的基础样式
+ * 暗黑主题 + 稀有度色系 + 通用组件
+ * =========================== */
+
+/* ---- 页面底色和全局字体 ---- */
+page {
+  background-color: #0f0f1a;                       /* 最深色暗黑主题背景 */
+  color: #e0e0e0;                                  /* 浅灰白色全局文字 */
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; /* 系统默认无衬线字体栈 */
+}
+
+/* ---- 通用容器 ---- */
+.container {
+  padding: 20rpx;                                  /* 统一内边距 */
+  min-height: 100vh;                               /* 最小高度撑满屏幕 */
+}
+
+/* ---- 通用卡片样式 ---- */
+.card {
+  background: #1a1a2e;                             /* 深蓝色卡片背景 */
+  border-radius: 16rpx;                            /* 大圆角 */
+  border: 1px solid #2a2a4a;                       /* 细边框增加层次感 */
+  overflow: hidden;                                /* 裁剪溢出内容（配合圆角） */
+}
+
+/* ---- 卡片点击态 ---- */
+.card-touch {
+  transition: all 0.2s;                            /* 过渡动画 */
+}
+.card-touch:active {
+  transform: scale(0.97);                          /* 按下时缩小 3% 提供触觉反馈 */
+  opacity: 0.9;                                    /* 按下时稍微透明 */
+}
+
+/* ---- 文字颜色工具类 ---- */
+.text-gold { color: #e6b800; }                     /* 金色——费用等醒目数值 */
+.text-silver { color: #c0c0c0; }                   /* 银色 */
+.text-bronze { color: #cd7f32; }                   /* 铜色 */
+.text-diamond { color: #b9f2ff; }                  /* 钻石蓝 */
+.text-muted { color: #888; font-size: 24rpx; }     /* 次要文字灰色+小字号 */
+
+/* ---- 稀有度颜色（与卡牌游戏传统色系对应） ---- */
+.rarity-paper { color: #A5A5A5; }                  /* 纸卡——灰色 */
+.rarity-tin { color: #948A54; }                    /* 锡卡——古铜色 */
+.rarity-platinum { color: #548DD4; }               /* 铂卡——蓝色 */
+.rarity-crystal { color: #8E5BB4; }                /* 晶卡——紫色 */
+
+/* ---- 主按钮（金橙渐变） ---- */
+.btn-primary {
+  background: linear-gradient(135deg, #e6b800, #ff8c00); /* 金→橙 135° 渐变 */
+  color: #1a1a2e;                                  /* 深色文字与亮色背景形成对比 */
+  border-radius: 40rpx;                            /* 大圆角胶囊形 */
+  padding: 20rpx 40rpx;                            /* 上下 20rpx 左右 40rpx */
+  font-weight: bold;                               /* 加粗 */
+  text-align: center;                              /* 文字居中 */
+  font-size: 28rpx;                                /* 字号 */
+}
+
+/* ---- 次要按钮（深灰背景） ---- */
+.btn-secondary {
+  background: #2a2a4a;                             /* 深灰蓝色背景 */
+  color: #e0e0e0;                                  /* 浅色文字 */
+  border-radius: 40rpx;                            /* 大圆角胶囊形 */
+  padding: 20rpx 40rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+/* ---- 小号按钮（缩小内边距和字号） ---- */
+.btn-small {
+  padding: 10rpx 24rpx;                            /* 小号内边距 */
+  font-size: 24rpx;                                /* 小号字号 */
+  border-radius: 24rpx;                            /* 小号圆角 */
+}
+
+/* ---- 标签样式 ---- */
+.tag {
+  display: inline-block;                           /* 行内块，不换行 */
+  padding: 4rpx 16rpx;                             /* 紧凑内边距 */
+  border-radius: 8rpx;                             /* 小圆角 */
+  font-size: 22rpx;                                /* 小字号 */
+  margin-right: 10rpx;                             /* 右侧间距 */
+}
+
+/* ---- 空状态 ---- */
+.empty-view {
+  display: flex;                                   /* flex 布局 */
+  flex-direction: column;                          /* 纵向排列（图标在上文字在下） */
+  align-items: center;                             /* 水平居中 */
+  justify-content: center;                         /* 垂直居中 */
+  padding: 120rpx 0;                               /* 大上下间距 */
+}
+.empty-view text {
+  color: #888;                                     /* 灰色文字 */
+  font-size: 28rpx;
+  margin-top: 20rpx;                               /* 与上方元素间距 */
+}
+
+/* ---- 分割线 ---- */
+.divider {
+  height: 1px;                                     /* 1 像素细线 */
+  background: #2a2a4a;                             /* 深色线 */
+  margin: 20rpx 0;                                 /* 上下间距 */
+}
+
+/* ---- 加载中 ---- */
+.loading-view {
+  display: flex;
+  justify-content: center;                         /* 水平居中 */
+  padding: 40rpx;                                  /* 内边距 */
+}

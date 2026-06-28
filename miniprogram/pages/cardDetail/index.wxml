@@ -1,0 +1,73 @@
+
+<view class="page">
+  
+  <block wx:if="{{ card }}">
+    
+    <view class="card-image-box" bindtap="previewCardImage">
+      <image src="{{ card.imageUrl }}" class="card-image" mode="aspectFit" />
+    </view>
+
+    
+    <view class="card-info card">
+      
+      <view class="info-header">
+        <text class="card-name">{{ card.name }}</text>
+        
+        <text class="card-rarity tag rarity-{{ card.rarity === '纸' ? 'paper' : card.rarity === '锡' ? 'tin' : card.rarity === '铂' ? 'platinum' : 'crystal' }}">{{ card.rarity }}卡</text>
+      </view>
+
+      
+      <view class="info-row">
+        <text class="info-label">费用</text>
+        <text class="info-value text-gold">{{ card.cost }}</text>
+      </view>
+      
+      <view class="info-row">
+        <text class="info-label">阵营</text>
+        <text class="info-value">{{ card.faction }}</text>
+      </view>
+      
+      <view class="info-row">
+        <text class="info-label">类型</text>
+        <text class="info-value">{{ card.type }}{{ card.subtype ? ' - ' + card.subtype : '' }}</text>
+      </view>
+
+      
+      <view class="stats-row" wx:if="{{ card.atk !== undefined || card.hp !== undefined }}">
+        <view class="stat-box">
+          <text class="stat-label">攻击力</text>
+          <text class="stat-value atk">{{ card.atk !== undefined ? card.atk : '-' }}</text>
+        </view>
+        <view class="stat-box">
+          <text class="stat-label">生命值</text>
+          <text class="stat-value hp">{{ card.hp !== undefined ? card.hp : '-' }}</text>
+        </view>
+      </view>
+
+      
+      <view class="desc-box" wx:if="{{ card.description }}">
+        <text class="info-label">描述</text>
+        <text class="desc-text">{{ card.description }}</text>
+      </view>
+
+      
+      <view class="desc-box" wx:if="{{ card.flavor }}">
+        <text class="info-label">背景故事</text>
+        <text class="flavor-text">{{ card.flavor }}</text>
+      </view>
+    </view>
+
+    
+    <view class="add-btn-box" wx:if="{{ fromDeck }}">
+      <view class="qty-row">
+        <text class="qty-label">添加数量</text>
+        <view class="qty-stepper">
+          <view class="qty-btn {{ quantity <= 1 ? 'qty-btn-disabled' : '' }}" bindtap="qtyMinus">−</view>
+          <text class="qty-value">{{ quantity }}</text>
+          <view class="qty-btn" bindtap="qtyPlus">＋</view>
+        </view>
+      </view>
+      <view class="btn-primary" bindtap="addToDeck">＋ 加入卡组 ×{{ quantity }}</view>
+    </view>
+  </block>
+</view>

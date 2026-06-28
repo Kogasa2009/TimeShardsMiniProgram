@@ -1,0 +1,134 @@
+/* ===========================
+ * 套牌编辑页样式
+ * 双栏布局 + 卡牌滚动列表 + 固定底部操作栏
+ * =========================== */
+
+/* 页面使用 flex 纵向布局撑满视口 */
+.page {
+  display: flex; flex-direction: column;
+  height: calc(100vh - 100rpx);                      /* 减去底部栏高度 */
+}
+
+/* ---- 套牌配置卡片 ---- */
+.deck-config { margin: 20rpx; padding: 20rpx; }
+.config-row {
+  display: flex; align-items: center; padding: 16rpx 0;
+}
+.config-row + .config-row { border-top: 1px solid #2a2a4a; } /* 非首个加分割线 */
+.config-label { width: 140rpx; font-size: 28rpx; color: #aaa; } /* 固定宽度标签 */
+.config-input { flex: 1; font-size: 28rpx; color: #e0e0e0; }
+.picker-value { color: #e6b800; font-size: 28rpx; }  /* 选择器当前值——金色 */
+
+/* ---- 搜索栏 ---- */
+.search-bar { padding: 0 20rpx 16rpx; }
+.search-input-box {
+  display: flex; align-items: center;
+  background: #1a1a2e; border: 1px solid #2a2a4a;
+  border-radius: 32rpx; padding: 10rpx 20rpx;
+}
+.search-icon { font-size: 24rpx; margin-right: 10rpx; }
+.search-input { flex: 1; font-size: 26rpx; color: #e0e0e0; }
+
+/* ---- 双栏布局 ---- */
+.columns {
+  display: flex; flex: 1;                            /* 占满剩余高度 */
+  gap: 10rpx; padding: 0 20rpx; overflow: hidden;
+}
+.col-left, .col-right {
+  flex: 1; display: flex; flex-direction: column; overflow: hidden;
+}
+.col-title {
+  font-size: 24rpx; color: #aaa;
+  padding: 10rpx 10rpx; display: block; flex-shrink: 0;
+}
+/* 右侧标题行——标题 + 清空按钮 */
+.col-title-row {
+  display: flex; justify-content: space-between;
+  align-items: center; padding: 10rpx; flex-shrink: 0;
+}
+.clear-btn { font-size: 22rpx; color: #ff4444; }     /* 清空按钮——红色 */
+
+/* 卡牌滚动列表——占满剩余高度 */
+.card-scroll {
+  height: 0; flex: 1;
+  background: #12121f; border-radius: 12rpx;
+  padding: 10rpx 10rpx 60rpx;                        /* 底部留白防止遮挡 */
+}
+
+/* ---- 迷你卡牌条目 ---- */
+.mini-card {
+  display: flex; align-items: center;
+  padding: 12rpx 14rpx; margin-bottom: 6rpx;
+  background: #1a1a2e; border-radius: 10rpx; border: 1px solid #222240;
+}
+.mini-card-cost {
+  width: 44rpx; height: 44rpx; border-radius: 50%;   /* 圆形费用标识 */
+  background: #2a2a4a; color: #e6b800;
+  font-size: 24rpx; font-weight: bold;
+  text-align: center; line-height: 44rpx;
+  margin-right: 12rpx; flex-shrink: 0;
+}
+.mini-card-name {
+  flex: 1; font-size: 24rpx; color: #ccc;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; /* 单行截断 */
+}
+.mini-card-faction {
+  font-size: 18rpx; color: #e6b800;
+  background: rgba(230, 184, 0, 0.12);
+  padding: 2rpx 8rpx; border-radius: 6rpx;
+  margin-left: 6rpx; max-width: 100rpx;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.mini-card-faction.faction-neutral { color: #6b9bd2; background: #1e2d3d; } /* 中立卡蓝色标识 */
+.mini-card-rarity { font-size: 20rpx; margin-left: 8rpx; }
+
+/* 卡组中的移除按钮——红色 × */
+.remove-btn {
+  font-size: 24rpx; color: #ff4444; margin-left: 8rpx;
+  width: 36rpx; text-align: center;
+}
+/* 当前封面卡牌——金色边框高亮 */
+.mini-card-deck.is-cover {
+  border-color: #e6b800; box-shadow: 0 0 8rpx rgba(230, 184, 0, 0.3);
+}
+.mini-card-cover-icon { font-size: 22rpx; color: #e6b800; margin-left: 4rpx; }
+
+/* ---- 固定底部操作栏 ---- */
+.bottom-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  padding: 16rpx 24rpx;
+  padding-bottom: calc(5rpx + env(safe-area-inset-bottom));
+  background: #12121f; border-top: 1px solid #2a2a4a;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.rule-text {
+  font-size: 20rpx; max-width: 55%; line-height: 1.4; /* 规则文字最多占 55% 宽 */
+}
+.btn-disabled { opacity: 0.4; }                      /* 按钮禁用态——半透明 */
+.bottom-btns { display: flex; gap: 16rpx; align-items: center; }
+
+/* ---- 导入代码弹层 ---- */
+.import-mask {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.7);                    /* 半透明黑色遮罩 */
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100;
+}
+.import-panel {
+  width: 600rpx;
+  background: #1a1a2e; border: 1px solid #2a2a4a;
+  border-radius: 20rpx; padding: 40rpx 30rpx 30rpx;
+}
+.import-title {
+  font-size: 32rpx; font-weight: bold; color: #fff;
+  display: block; margin-bottom: 24rpx;
+}
+.import-textarea {
+  width: 100%; min-height: 120rpx;
+  background: #12121f; border: 1px solid #2a2a4a;
+  border-radius: 12rpx; padding: 20rpx;
+  color: #e0e0e0; font-size: 24rpx; box-sizing: border-box;
+}
+.import-btns {
+  display: flex; justify-content: flex-end; gap: 16rpx; margin-top: 24rpx;
+}

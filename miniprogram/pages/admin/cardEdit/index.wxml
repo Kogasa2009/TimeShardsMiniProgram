@@ -1,0 +1,96 @@
+
+<view class="page">
+  
+  <view class="form-title">
+    <text>{{ editing ? '编辑卡牌' : '新增卡牌' }}</text>
+  </view>
+
+  
+  <view class="form card">
+    
+    <view class="form-row">
+      <text class="form-label">名称 *</text>
+      <input class="form-input" placeholder="卡牌名称" placeholder-style="color:#555" value="{{ card_name }}" bindinput="onInput" data-field="card_name" />
+    </view>
+    
+    <view class="form-row">
+      <text class="form-label">阵营</text>
+      <picker mode="selector" range="{{ factions }}" value="{{ selectedFaction }}" bindchange="onPickerChange" data-field="selectedFaction">
+        <view class="picker-value">{{ factions[selectedFaction] }}</view>
+      </picker>
+    </view>
+    
+    <view class="form-row">
+      <text class="form-label">费用</text>
+      <input class="form-input" type="number" placeholder="0" placeholder-style="color:#555" value="{{ cost }}" bindinput="onInput" data-field="cost" />
+    </view>
+    
+    <view class="form-row">
+      <text class="form-label">科技等级</text>
+      <input class="form-input" type="number" placeholder="0" placeholder-style="color:#555" value="{{ level }}" bindinput="onInput" data-field="level" />
+    </view>
+    
+    <view class="form-row">
+      <text class="form-label">稀有度</text>
+      <picker mode="selector" range="{{ rarities }}" value="{{ selectedRarity }}" bindchange="onPickerChange" data-field="selectedRarity">
+        <view class="picker-value">{{ rarities[selectedRarity] }}</view>
+      </picker>
+    </view>
+    
+    <view class="form-row">
+      <text class="form-label">类别</text>
+      <picker mode="selector" range="{{ types }}" value="{{ selectedType }}" bindchange="onPickerChange" data-field="selectedType">
+        <view class="picker-value">{{ types[selectedType] }}</view>
+      </picker>
+    </view>
+    
+    <view class="form-row">
+      <text class="form-label">副类别</text>
+      <input class="form-input" placeholder="例如: 骑士" placeholder-style="color:#555" value="{{ subtype }}" bindinput="onInput" data-field="subtype" />
+    </view>
+    
+    <view class="form-row">
+      <text class="form-label">攻击力</text>
+      <input class="form-input" type="number" placeholder="0" placeholder-style="color:#555" value="{{ atk }}" bindinput="onInput" data-field="atk" />
+    </view>
+    
+    <view class="form-row">
+      <text class="form-label">生命值</text>
+      <input class="form-input" type="number" placeholder="0" placeholder-style="color:#555" value="{{ hp }}" bindinput="onInput" data-field="hp" />
+    </view>
+    
+    <view class="form-row form-row-col">
+      <text class="form-label">描述</text>
+      <textarea class="form-textarea" placeholder="卡牌描述" placeholder-style="color:#555" value="{{ description }}" bindinput="onInput" data-field="description" />
+    </view>
+    
+    <view class="form-row form-row-col">
+      <text class="form-label">背景故事</text>
+      <textarea class="form-textarea" placeholder="背景文字" placeholder-style="color:#555" value="{{ flavor }}" bindinput="onInput" data-field="flavor" />
+    </view>
+  </view>
+
+  
+  <view class="image-section">
+    <text class="section-label">卡牌图片</text>
+    <view class="image-upload">
+      
+      <block wx:if="{{ imageList.length > 0 }}">
+        <view class="image-preview">
+          <image src="{{ imageList[0] }}" mode="aspectFill" bindtap="previewImage" />
+          <text class="remove-img" bindtap="removeImage">✕</text>
+        </view>
+      </block>
+      
+      <view class="upload-btn" bindtap="chooseImage" wx:else>
+        <text class="upload-icon">＋</text>
+        <text class="text-muted">点击上传</text>
+      </view>
+    </view>
+  </view>
+
+  
+  <view class="save-bar">
+    <view class="btn-primary" bindtap="saveCard">保存卡牌</view>
+  </view>
+</view>

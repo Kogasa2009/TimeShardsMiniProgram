@@ -1,0 +1,151 @@
+/* ===========================
+ * 管理员卡牌管理页样式
+ * 页面头部 + 搜索栏 + 阵营标签 + 卡牌列表
+ * =========================== */
+
+/* 页面内边距 */
+.page {
+  padding: 20rpx;
+  padding-bottom: 40rpx;
+}
+
+/* ---- 搜索栏 ---- */
+.search-bar {
+  margin-bottom: 16rpx;
+}
+.search-input-box {
+  display: flex;
+  align-items: center;
+  background: #1a1a2e;                              /* 深色输入框背景 */
+  border: 1px solid #2a2a4a;
+  border-radius: 32rpx;                             /* 圆角胶囊形 */
+  padding: 10rpx 20rpx;
+}
+.search-icon {
+  font-size: 24rpx;
+  margin-right: 10rpx;
+}
+.search-input {
+  flex: 1;                                          /* 占满剩余空间 */
+  font-size: 26rpx;
+  color: #e0e0e0;
+}
+.search-clear {
+  font-size: 24rpx;
+  color: #888;
+  padding: 4rpx 8rpx;                               /* 增大点击区域 */
+}
+
+/* ---- 页面头部 ---- */
+.admin-header {
+  display: flex;
+  justify-content: space-between;                   /* 标题左、按钮右 */
+  align-items: center;
+  padding: 10rpx 0 20rpx;
+}
+.admin-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* ---- 阵营标签栏（横向滚动） ---- */
+.faction-tabs {
+  white-space: nowrap;                              /* 不换行，触发横向滚动 */
+  margin-bottom: 20rpx;
+}
+.tab-list {
+  display: flex;
+  gap: 12rpx;                                       /* 标签间距 */
+}
+/* 单个标签：胶囊形 */
+.tab-item {
+  display: inline-block;
+  padding: 10rpx 24rpx;
+  border-radius: 20rpx;
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  color: #888;
+  font-size: 24rpx;
+}
+/* 激活态：金色纯色背景 + 深色文字 */
+.tab-item.active {
+  background: #e6b800;
+  color: #1a1a2e;
+  border-color: transparent;
+}
+
+/* ---- 卡牌列表（纵向排列） ---- */
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+/* 单行卡牌条目：缩略图 + 信息 + 操作按钮 */
+.card-item {
+  display: flex;
+  align-items: center;
+  padding: 16rpx;
+  background: #1a1a2e;
+  border-radius: 12rpx;
+  border: 1px solid #2a2a4a;
+}
+.card-thumb {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;                                   /* 不被压缩 */
+}
+/* 卡牌信息：名称 + 费用/稀有度/类型 */
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+.card-name {
+  font-size: 28rpx;
+  color: #e0e0e0;
+  font-weight: bold;
+}
+.card-meta {
+  display: flex;
+  gap: 16rpx;
+}
+
+/* 操作按钮区 */
+.card-actions {
+  display: flex;
+  gap: 10rpx;
+}
+/* 编辑/删除按钮共用尺寸 */
+.btn-edit, .btn-delete {
+  padding: 8rpx 20rpx;
+  border-radius: 16rpx;
+  font-size: 22rpx;
+}
+.btn-edit {
+  background: #2a2a4a;
+  color: #e6b800;                                   /* 金色文字 */
+}
+.btn-delete {
+  background: rgba(255, 68, 68, 0.15);              /* 半透明红色背景 */
+  color: #ff4444;                                   /* 红色文字 */
+}
+
+/* 卡牌启用/禁用状态徽章 */
+.status-badge {
+  font-size: 20rpx;
+  padding: 2rpx 10rpx;
+  border-radius: 12rpx;
+}
+.status-badge.enabled {
+  background: rgba(68, 204, 68, 0.15);
+  color: #44cc44;                                   /* 绿色 = 已启用 */
+}
+.status-badge.disabled {
+  background: rgba(255, 68, 68, 0.15);
+  color: #ff6666;                                   /* 红色 = 已禁用 */
+}

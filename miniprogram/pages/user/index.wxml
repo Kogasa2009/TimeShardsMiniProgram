@@ -1,0 +1,68 @@
+
+<view class="page">
+  
+  <view class="profile-header">
+    
+    <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+      <image class="avatar" wx:if="{{ userInfo.avatarUrl }}" src="{{ userInfo.avatarUrl }}" mode="aspectFill" />
+      
+      <view class="avatar avatar-placeholder" wx:else>
+        <text class="avatar-placeholder-text">点击设置头像</text>
+      </view>
+    </button>
+    
+    <input class="nickname-input" type="nickname" value="{{ userInfo.nickName }}" placeholder="点击设置昵称" placeholder-style="color:#888" bindblur="onNicknameBlur" />
+    
+    <text class="admin-badge" wx:if="{{ isAdmin }}">管理员</text>
+  </view>
+
+  
+  <block wx:if="{{ showTab === 'main' }}">
+    <view class="menu-list">
+      
+      <block wx:for="{{ settings }}" wx:key="key">
+        
+        <view wx:if="{{ !item.admin || isAdmin }}" class="menu-item card-touch" bindtap="navigateTo" data-key="{{ item.key }}">
+          <view class="menu-item-left">
+            <text class="menu-icon">{{ item.icon }}</text>    
+            <text class="menu-text">{{ item.text }}</text>    
+          </view>
+          <text class="menu-arrow">›</text>                   
+        </view>
+      </block>
+      
+      <button class="logout-btn" bindtap="logout">退出登录</button>
+    </view>
+  </block>
+
+  
+  <block wx:if="{{ showTab === 'favorites' }}">
+    
+    <view class="fav-header">
+      <text class="back-btn" bindtap="backToMain">‹ 返回</text>
+      <text class="fav-title">我的收藏</text>
+      <text></text>                                 
+    </view>
+
+    
+    <view class="fav-list">
+      <block wx:for="{{ favoriteDecks }}" wx:key="_id">
+        
+        <view class="fav-item card card-touch" bindtap="goToDeckDetail" data-id="{{ item._id }}">
+          
+          <image src="{{ item.coverUrl || '/images/default-deck-cover.png' }}" class="fav-cover" mode="aspectFill" />
+          <view class="fav-info">
+            <text class="fav-name">{{ item.name }}</text>                  
+            <text class="text-muted">{{ item.faction }} · {{ item.totalCards }}张</text> 
+          </view>
+          
+          <text class="remove-fav" catchtap="removeFavorite" data-id="{{ item._id }}">✕</text>
+        </view>
+      </block>
+      
+      <view class="empty-view" wx:if="{{ favoriteDecks.length === 0 }}">
+        <text>还没有收藏</text>
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,16 @@
+
+<view class="welcome-container {{isReady ? 'ready' : ''}}">
+  
+  <view class="welcome-overlay"></view>
+  
+  <view class="welcome-content fade-in-up">
+    
+    <image class="welcome-logo" src="/images/logo.png" mode="aspectFit"></image>
+    
+    <text class="welcome-title">TimeShards</text>
+    
+    <text class="welcome-subtitle">构筑你的卡组</text>
+    
+    <button class="welcome-btn" bindtap="handleEnter">立即进入</button>
+  </view>
+</view>

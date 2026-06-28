@@ -1,0 +1,31 @@
+
+<view class="login-container">
+  
+  <view class="login-card">
+    
+    <image class="login-logo" src="/images/logo.png" mode="aspectFit"></image>
+    
+    <text class="login-title">TimeShards</text>
+    
+    <text class="login-desc">请输入昵称以继续</text>
+
+    
+
+    
+    <input
+      class="nickname-input"
+      type="nickname"
+      placeholder="请输入昵称"
+      value="{{nickName}}"
+      bindinput="onNicknameInput"                    
+      bindblur="onNicknameBlur"                      
+    />
+
+    
+    <button
+      class="login-btn"
+      bindtap="doLogin"
+      disabled="{{!canLogin}}"
+    >进入小程序</button>
+  </view>
+</view>

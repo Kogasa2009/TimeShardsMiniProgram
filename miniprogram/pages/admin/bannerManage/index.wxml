@@ -1,0 +1,29 @@
+
+<view class="banner-manage">
+  
+  <view class="header-bar">
+    <text class="header-title">轮播图列表</text>
+    <button class="add-btn" bindtap="addBanner">+ 新增</button>
+  </view>
+
+  
+  <block wx:for="{{banners}}" wx:key="_id">
+    <view class="banner-item">
+      
+      <image class="banner-thumb" src="{{item.imageUrl}}" mode="aspectFill"></image>
+      <view class="banner-info">
+        
+        <view class="banner-actions">
+          <button class="action-btn" bindtap="moveUp" data-id="{{item._id}}" data-order="{{item.sortOrder}}">↑</button>
+          <button class="action-btn" bindtap="moveDown" data-id="{{item._id}}" data-order="{{item.sortOrder}}">↓</button>
+          <button class="action-btn danger" bindtap="deleteBanner" data-id="{{item._id}}">删除</button>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  
+  <view class="empty" wx:if="{{banners.length === 0}}">
+    <text>暂无轮播图，点击新增添加</text>
+  </view>
+</view>

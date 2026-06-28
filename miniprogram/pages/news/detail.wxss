@@ -1,0 +1,51 @@
+/* ===========================
+ * 公告详情页样式
+ * =========================== */
+
+/* 页面内边距 */
+.page {
+  padding: 24rpx;
+}
+
+/* 文章容器：卡片样式 */
+.article {
+  background: #1a1a2e;
+  border-radius: 16rpx;
+  padding: 30rpx;
+}
+
+/* 文章标题：大号白色加粗 */
+.article-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  display: block;
+  line-height: 1.4;
+  margin-bottom: 12rpx;
+}
+
+/* 发布时间 */
+.article-time {
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+/* 正文区域 */
+.article-content {
+  margin-top: 20rpx;
+}
+
+/* 正文中的图片：占满宽度 */
+.article-image {
+  width: 100%;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 正文文字：较浅灰色，大行距，保留空白和换行 */
+.article-text {
+  font-size: 28rpx;
+  color: #bbb;
+  line-height: 1.8;
+  white-space: pre-wrap;                           /* 保留换行符和空格 */
+}

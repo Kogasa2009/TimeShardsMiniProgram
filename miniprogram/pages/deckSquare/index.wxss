@@ -1,0 +1,97 @@
+/* ===========================
+ * 套牌广场页样式
+ * 搜索栏 + 阵营标签栏 + 排序栏 + 双列网格
+ * =========================== */
+
+/* 页面底部留白 */
+.page { padding-bottom: 40rpx; }
+
+/* ---- 搜索栏 ---- */
+.search-bar { padding: 20rpx 24rpx; }
+/* 搜索框容器——全圆角胶囊 */
+.search-input-box {
+  display: flex; align-items: center;
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 40rpx;                              /* 大圆角胶囊形 */
+  padding: 12rpx 24rpx;
+}
+.search-icon { font-size: 28rpx; margin-right: 12rpx; }
+.search-input { flex: 1; font-size: 28rpx; color: #e0e0e0; }
+
+/* ---- 阵营标签栏 ---- */
+.faction-tabs {
+  white-space: nowrap;                               /* 禁止换行 */
+  padding: 0 24rpx;
+}
+.tab-list {
+  display: flex;
+  gap: 16rpx;                                        /* 标签间距 */
+}
+/* 单个阵营标签——深色底灰色字 */
+.tab-item {
+  display: inline-block;
+  padding: 12rpx 28rpx;
+  border-radius: 24rpx;                              /* 胶囊形 */
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  color: #888;
+  font-size: 26rpx;
+  transition: all 0.2s;                              /* 切换过渡 */
+}
+/* 激活态——金橙渐变背景 + 深色文字 */
+.tab-item.active {
+  background: linear-gradient(135deg, #e6b800, #ff8c00);
+  color: #1a1a2e;
+  border-color: transparent;
+  font-weight: bold;
+}
+
+/* ---- 排序栏 ---- */
+.sort-bar {
+  display: flex; justify-content: center; gap: 30rpx; padding: 16rpx 0;
+}
+.sort-label {
+  font-size: 26rpx; color: #888;
+  padding: 6rpx 20rpx; border-radius: 20rpx;
+  background: rgba(255,255,255,0.05);
+}
+.sort-label.active {
+  color: #e6b800; background: rgba(230,184,0,0.15);  /* 激活态金色高亮 */
+}
+
+/* ---- 套牌内容 ---- */
+.deck-content { padding: 24rpx; }
+/* 双列网格 */
+.deck-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;                    /* 等宽两列 */
+  gap: 20rpx;
+}
+.deck-card { overflow: hidden; }
+
+/* 封面容器——裁剪卡图 (17,71)-(569,390) 区域，宽高比 591:319 */
+.deck-cover-box {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 54.0%;                             /* 319/591 ≈ 54% 高度由 padding 撑开 */
+  overflow: hidden;
+  border-radius: 12rpx 12rpx 0 0;                    /* 上圆角 */
+}
+.deck-cover-box image {
+  position: absolute;
+  width: 100%;
+  top: -22.3%;                                       /* -71/319 向上偏移裁剪顶部 */
+  left: -2.9%;                                       /* -17/591 向左偏移裁剪左侧 */
+}
+
+/* 套牌信息 */
+.deck-info { padding: 16rpx; }
+.deck-likes { font-size: 22rpx; color: #e6b800; margin-top: 4rpx; }
+.deck-name {
+  font-size: 28rpx; color: #e0e0e0; font-weight: bold;
+  display: block; margin-bottom: 8rpx;
+}
+/* 元数据行——创作者左，时间右 */
+.deck-meta { display: flex; justify-content: space-between; }

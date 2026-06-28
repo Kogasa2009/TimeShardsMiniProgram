@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/welcome/index",
+    "pages/login/index",
+    "pages/index/index",
+    "pages/deckSquare/index",
+    "pages/deckBuild/index",
+    "pages/user/index",
+    "pages/news/list",
+    "pages/news/detail",
+    "pages/deckDetail/index",
+    "pages/cardDetail/index",
+    "pages/deckEdit/index",
+    "pages/admin/cardManage/index",
+    "pages/admin/cardEdit/index",
+    "pages/admin/newsManage/index",
+    "pages/admin/newsEdit/index",
+    "pages/admin/bannerManage/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1a1a2e",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "TimeShards",
+    "backgroundColor": "#0f0f1a",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "color": "#888888",
+    "selectedColor": "#e6b800",
+    "borderStyle": "black",
+    "backgroundColor": "#1a1a2e",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/deckSquare/index",
+        "text": "套牌广场",
+        "iconPath": "images/square.png",
+        "selectedIconPath": "images/square-active.png"
+      },
+      {
+        "pagePath": "pages/deckBuild/index",
+        "text": "组牌",
+        "iconPath": "images/build.png",
+        "selectedIconPath": "images/build-active.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "我的",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

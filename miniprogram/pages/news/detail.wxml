@@ -1,0 +1,22 @@
+
+<view class="page">
+  <block wx:if="{{ news }}">
+    <view class="article">
+      
+      <text class="article-title">{{ news.title }}</text>
+      
+      <text class="article-time text-muted">{{ news.createTime }}</text>
+      
+      <view class="divider"></view>
+      
+      <view class="article-content">
+        
+        <block wx:for="{{ news.images }}" wx:key="index">
+          <image src="{{ item }}" class="article-image" mode="widthFix" bindtap="previewImage" data-src="{{ item }}" />
+        </block>
+        
+        <text class="article-text">{{ news.content }}</text>
+      </view>
+    </view>
+  </block>
+</view>

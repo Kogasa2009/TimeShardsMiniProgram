@@ -1,0 +1,74 @@
+
+<view class="page">
+  
+  <view class="search-bar">
+    <view class="search-input-box">
+      <text class="search-icon">🔍</text>             
+      <input class="search-input"
+        placeholder="搜索套牌名称..."
+        placeholder-style="color:#666"
+        value="{{ searchKey }}"
+        bindinput="onSearchInput"                    
+        bindconfirm="onSearch" />                    
+    </view>
+  </view>
+
+  
+  <scroll-view class="faction-tabs" scroll-x="true">
+    <view class="tab-list">
+      <block wx:for="{{ factions }}" wx:key="index">
+        <view class="tab-item {{ activeFaction === index ? 'active' : '' }}"
+          bindtap="switchFaction"
+          data-index="{{ index }}">
+          <text>{{ item }}</text>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  
+  <view class="sort-bar">
+    <text class="sort-label {{sortBy === 'time' ? 'active' : ''}}"
+      bindtap="switchSort" data-sort="time">最新</text>
+    <text class="sort-label {{sortBy === 'likes' ? 'active' : ''}}"
+      bindtap="switchSort" data-sort="likes">最热</text>
+  </view>
+
+  
+  <view class="deck-content">
+    
+    <view class="loading-view" wx:if="{{ loading }}">
+      <text class="text-muted">加载中...</text>
+    </view>
+
+    
+    <view class="deck-grid" wx:else>
+      <block wx:for="{{ decks }}" wx:key="_id">
+        <view class="deck-card card card-touch"
+          bindtap="goToDeckDetail"
+          data-id="{{ item._id }}">
+          
+          <view class="deck-cover-box">
+            <image src="{{ item.coverUrl || '/images/default-deck-cover.png' }}" mode="widthFix" />
+          </view>
+          
+          <view class="deck-info">
+            <text class="deck-name">{{ item.name }}</text>       
+            <view class="deck-likes">♥ {{item.likes || 0}}</view> 
+            <view class="deck-meta">
+              <text class="text-muted">{{ item.creatorName }}</text> 
+              <text class="text-muted">{{ item.createTime }}</text>   
+            </view>
+          </view>
+        </view>
+      </block>
+
+      
+      <view class="empty-view" wx:if="{{ decks.length === 0 && !loading }}"
+        style="grid-column: 1 / -1; text-align: center;">
+        <text>暂无套牌</text>
+        <text class="text-muted">成为第一个创建套牌的玩家吧</text>
+      </view>
+    </view>
+  </view>
+</view>

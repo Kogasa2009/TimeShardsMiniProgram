@@ -1,0 +1,48 @@
+
+<view class="index-container">
+  
+  <swiper class="banner-swiper"
+    indicator-dots="{{true}}"                         
+    autoplay="{{true}}"                              
+    interval="4000"                                  
+    duration="500"                                   
+    circular="{{true}}">                             
+    
+    <block wx:for="{{banners}}" wx:key="_id">
+      <swiper-item>
+        <image class="banner-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+      </swiper-item>
+    </block>
+    
+    <swiper-item wx:if="{{banners.length === 0}}">
+      <view class="banner-placeholder">
+        <text>暂无轮播图</text>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  
+  <view class="section-header">
+    <text class="section-title">最新公告</text>
+    <text class="section-more" bindtap="goToNewsList">更多 ></text>
+  </view>
+
+  
+  <view class="news-list">
+    <block wx:for="{{newsList}}" wx:key="_id">
+      
+      <view class="news-item" bindtap="goToNewsDetail" data-id="{{item._id}}">
+        <image class="news-cover" src="{{item.coverUrl}}" mode="aspectFill" wx:if="{{item.coverUrl}}"></image>
+        <view class="news-info">
+          <text class="news-title">{{item.title}}</text>       
+          <text class="news-summary">{{item.summary}}</text>   
+          <text class="news-time">{{item.createTime}}</text>   
+        </view>
+      </view>
+    </block>
+    
+    <view class="news-empty" wx:if="{{newsList.length === 0}}">
+      <text>暂无公告</text>
+    </view>
+  </view>
+</view>
