@@ -1,0 +1,6 @@
+{
+  // 云函数权限配置——permissions.openapi 控制该云函数可调用的微信开放接口
+  "permissions": {
+    "openapi": []                                 // 空数组表示不请求任何开放接口权限
+  }
+}
